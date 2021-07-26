@@ -45,6 +45,32 @@ router.post('/workouts', (req, res) => {
     })
 });
 
+router.put('/workouts/:id', (req, res) => {
+    // upsert mean if it's there update it, if it isn't insert it
+    Workout.findByIdAndUpdate(req.params.id,
+        {
+            $push: {
+                exercises: {
+                    type: req.body.type,
+                    name: req.body.name,
+                    duration: req.body.duration,
+                    weight: req.body.weight,
+                    reps: req.body.reps,
+                    sets: req.body.sets,
+                    distance: req.body.distance,
+                },
+            },  
+        },
+            { new: true},
+        )
+        .then((updatedWorkoutData) => {
+            res.status(200).json(updatedWorkoutData)
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({errors: err});
+        });
+});
 
 // api/workouts/range - GET request
 // likely to be reading a list of resources
