@@ -27,6 +27,25 @@ router.get('/workouts', async (req, res) => {
     }
 });
 
+
+
+// api/workouts - POST request
+// workout is the resource/model, we are creating a new resource
+// consider workouts a model
+// anything you can collect data is considered a model
+
+router.post('/workouts', (req, res) => {
+    Workout.create({})
+    .then((newWorkoutData) => {
+        res.status(200).json(newWorkoutData);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json({errors: err});
+    })
+});
+
+
 // api/workouts/range - GET request
 // likely to be reading a list of resources
 
