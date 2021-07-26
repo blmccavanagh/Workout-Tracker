@@ -51,7 +51,7 @@ function populateChart(data) {
       responsive: true,
       title: {
         display: true,
-        text: 'Time Spent Working Out (Last 7 days)',
+        text: 'Time Spent Working Out (All Time)',
       },
       scales: {
         y: {
@@ -92,7 +92,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Pounds Lifted (Last 7 days)',
+        text: 'Pounds Lifted (All Time)',
       },
       scales: {
         yAxes: [
